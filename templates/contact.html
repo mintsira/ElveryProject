@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}	
+
+<!-- Header Inner -->
+<div class="header-inner">
+	<div class="container">
+		<div class="cat-nav-head">
+			<div class="row">
+				<div class="col-12">
+					<div class="menu-area">
+						<!-- Main Menu -->
+						<nav class="navbar navbar-expand-lg">
+							<div class="navbar-collapse">	
+								<div class="nav-inner">	
+									<ul class="nav main-menu menu navbar-nav">
+										<li><a href="{% url 'home' %}">หน้าหลัก</a></li>
+											<li><a href="{% url 'foods' %}">เมนู</a></li>												
+											<li><a>ซื้อสินค้า<i class="ti-angle-down"></i><span></span></a>
+												<ul class="dropdown">
+													<li><a href="{% url 'cart' %}">ตระกร้าสินค้า</a></li>
+													<li><a href="{% url 'checkout' %}">การสั่งซื้อ</a></li>
+												</ul>
+											</li>	
+											<li class="active"><a href="{% url 'contact' %}">เกี่ยวกับเรา</a></li>	
+									</ul>
+								</div>
+							</div>
+						</nav>
+						<!--/ End Main Menu -->	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/ End Header Inner -->
+</header>
+<!--/ End Header -->
+	<!-- Breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="bread-inner">
+						<ul class="bread-list">
+							<li><a href="{% url 'home' %}">หน้าหลัก<i class="ti-arrow-right"></i></a></li>
+							<li class="active"><a href="{% url 'contact' %}">เกี่ยวกับเรา</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Breadcrumbs -->
+  
+	<!-- Start Contact -->
+	<section id="contact-us" class="contact-us section">
+		<div class="container">
+				<div class="contact-head">
+					<div class="row">
+						<div class="col-lg-8 col-12">
+							<div class="form-main">
+								<div class="title">
+									<h3>บริษัท เอลเวอรี่ จำกัด</h3>
+								</div>
+								<div class="logo">
+									<img src="{% static 'images\โลโก้ 3.png' %}" alt="logo" width="200" height="200">
+								</div>
+								<div class="detail">
+									<br>
+									<h5>Elvery - เพราะเราแนะนำอาหารดี ๆ ได้ทุกวัน</h5><br>
+									<h6>Elvery เป็นแหล่งรวบรวมอาหารสุขภาพ สำหรับสำหรับผู้สูงอายุ ผู้ที่มีโรคประจำตัว หรือบุคคลทั่วไปที่อยากดูแลสุขภาพ ที่มีบริการจัดส่งถึงที่บ้าน</h6><br>
+									<br>
+									<h6>อาหารสุขภาพสำเร็จรูปแช่แข็ง ส่งฟรีทั่วไทย</h6><br>
+									<h6>จัดส่งทุกวัน ถึงมือภายใน 1-2 วัน</h6>
+									<br>
+								</div>
+								
+							</div>
+						</div>
+						<div class="col-lg-4 col-12">
+							<div class="single-head">
+								<div class="single-info">
+									<i class="fa fa-phone"></i>
+									<h4 class="title">โทรศัพท์:</h4>
+									<ul>
+										<li>0-2800-8000</li>
+										<li>0-2900-8000</li>
+									</ul>
+								</div>
+								<div class="single-info">
+									<i class="fa fa-envelope-open"></i>
+									<h4 class="title">อีเมล:</h4>
+									<ul>
+										<li><a href="mailto:info@yourwebsite.com">support@elvery.com</a></li>
+										<li><a href="mailto:info@yourwebsite.com">info@elvery.com</a></li>
+									</ul>
+								</div>
+								<div class="single-info">
+									<i class="fa fa-location-arrow"></i>
+									<h4 class="title">ที่อยู่:</h4>
+									<ul>
+										<li>ถนนประชาอุทิศ, แขวงบางมด, เขตทุ่งครุ, กรุงเทพฯ 10140</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</section>
+	<!--/ End Contact -->
+	
+	
+	
+{% endblock content %}

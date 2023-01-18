@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block site_title %}ข้อมูลผู้ใช้ - {% endblock %}
+
+{% block content %}
+<center><section class="content-section content-section-single">
+  <div class="content-container content-container-narrow">
+    <h3 class="content-title">โปรไฟล์ของคุณ {{ user.username}}</h3><br>
+    <p>
+      <a href="{% url 'profile' %}">ข้อมูลผู้ใช้</a>&nbsp;|
+      <a href="{% url 'password_change' %}">เปลี่ยนรหัสผ่าน</a>
+    </p><br>
+    <h5>ข้อมูลผู้ใช้</h5><br>
+    <form action="{% url 'profile' %}" method="POST">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form-field">
+          {{ form.first_name.label_tag }}<br>
+          {{ form.first_name }}
+          {{ form.first_name.errors }}
+        </div><br>
+        <div class="form-field">
+            {{ form.last_name.label_tag }}<br>
+            {{ form.last_name }}
+            {{ form.last_name.errors }}
+          </div><br>
+          <div class="form-field">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {{ form.email.errors }}
+          </div>
+        <p>
+          <br><button type="submit">บันทึก</button>
+        </p>
+      </form>
+      <br>
+      <p>
+        <a href="{% url 'home' %}">กลับสู่หน้าหลัก</a>
+      </p>
+  </div>
+</section></center>
+{% endblock %}

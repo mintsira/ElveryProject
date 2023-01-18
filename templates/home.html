@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<!-- Header Inner -->
+<div class="header-inner">
+	<div class="container">
+		<div class="cat-nav-head">
+			<div class="row">
+				<div class="col-lg-9 col-12">
+					<div class="menu-area">
+						<!-- Main Menu -->
+						<nav class="navbar navbar-expand-lg">
+							<div class="navbar-collapse">	
+								<div class="nav-inner">	
+									<ul class="nav main-menu menu navbar-nav">
+											<li class="active"><a href="{% url 'home' %}">หน้าหลัก</a></li>
+											<li><a href="{% url 'foods' %}">เมนู</a></li>												
+											<li><a>ซื้อสินค้า<i class="ti-angle-down"></i><span></span></a>
+												<ul class="dropdown">
+													<li><a href="{% url 'cart' %}">ตระกร้าสินค้า</a></li>
+													<li><a href="{% url 'checkout' %}">การสั่งซื้อ</a></li>
+												</ul>
+											</li>
+											<li><a href="{% url 'contact' %}">เกี่ยวกับเรา</a></li>									
+										</ul>
+								</div>
+							</div>
+						</nav>
+						<!--/ End Main Menu -->	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/ End Header Inner -->
+</header>
+<!--/ End Header -->
+	
+	<!-- Slider Area -->
+	<section class="hero-slider">
+		<!-- Single Slider -->
+		<div class="single-slider">
+			<img src="{% static 'images/banner4.png' %}" alt="hero-banner">	
+		</div>
+		<!--/ End Single Slider -->
+	</section>
+	<!--/ End Slider Area -->
+
+	<!-- Start Product Area -->
+    <div class="product-area section">
+            <div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="section-title">
+							<h2>เมนูแนะนำ สำหรับคนมีโรคประจำตัว</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="product-info">
+							<div class="tab-content" id="myTabContent">
+								<!-- Start Single Tab -->
+								<div class="tab-pane fade show active" id="man" role="tabpanel">
+									<div class="tab-single">
+										<div class="row">
+									
+
+											{% for product in products %}
+											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
+												<div class="single-product">
+													<div class="product-img">
+														<a href="#">
+															<img class="default-img" src="{{ product.imageURL }}" alt="#">
+															<img class="hover-img" src="{{ product.image_hoverURL }}" alt="#">
+															<span class="{{ product.tag_class}}">{{ product.tag }}</span>
+														</a>
+														<div class="button-head">
+															<div class="product-action-2">
+																<a data-product="{{ product.id }}" data-action="add" title="เพิ่มไปที่ตะกร้า" class="add-btn update-cart" href="#"> เพิ่มไปที่ตะกร้า</a>
+															</div>
+														</div>
+													</div>
+													<div class="product-content">
+														<font size = "5"><strong><a>{{ product.name }}</a></strong></font></br>
+														<font size = "3"><strong><a>ส่วนประกอบ</br></a></strong></font>
+														<font size = "3"><a>{{ product.description }}</a></font>
+														<div class="product-price">
+															<span><font size = "4", color = #d01716>฿ {{ product.price|floatformat:2 }}</font></span>
+														</div>
+													</div>
+												</div>
+											</div>
+											{% endfor product in products %}
+					
+						
+											
+										</div>
+									</div>
+								</div>
+								<!--/ End Single Tab -->
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+	
+	<!-- Start Most Popular -->
+	<div class="product-area most-popular section">
+        <div class="container">
+            <div class="row">
+				<div class="col-12">
+					<div class="section-title">
+						<h2>เมนูยอดนิยม</h2>
+					</div>
+				</div>
+            </div>
+            <div class="row">
+				
+                <div class="col-12">
+                    <div class="owl-carousel popular-slider">
+
+
+						{% for product in products %}
+						<!-- Start Single Product -->
+						<div class="single-product">
+							<div class="product-img">
+								<a>
+									<img class="default-img" src="{{ product.imageURL }}">
+									<img class="hover-img" src="{{ product.image_hoverURL }}">
+									<span class="{{ product.tag_class }}">{{product.tag}}</span>
+								</a>
+								<div class="button-head">
+									<div class="product-action-2">
+										<a class="add-btn update-cart" data-product="{{ product.id }}" data-action="add" title="เพิ่มไปที่ตะกร้า" href="#">เพิ่มไปที่ตะกร้า</a>
+									</div>
+								</div>
+							</div>
+							<div class="product-content">
+								<font size = "5"><strong><a>{{ product.name }}</a></strong></font></br>
+								<font size = "3"><strong><a>ส่วนประกอบ</br></a></strong></font>
+								<font size = "3"><a>{{ product.description }}</a></font>
+								<div class="product-price">
+									<span><font color = #d01716>฿ {{ product.price|floatformat:2 }}</font></span>
+								</div>
+							</div>
+						</div>
+						<!-- End Single Product -->
+						{% endfor product in products %}
+
+						
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- End Most Popular Area -->
+	
+	{% endblock content %}
+	

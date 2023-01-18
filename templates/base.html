@@ -1,0 +1,233 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Meta Tag -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name='copyright' content=''>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Title Tag  -->
+    <title>Elvery - เพราะเราแนะนำอาหารดี ๆ ได้ทุกวัน</title>
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="{% static 'images/โลโก้2.png' %}"> 
+
+	<!-- Web Font -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+	
+    <!-- StyleSheet -->
+	
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css '%}">
+	<!-- Magnific Popup -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.min.css' %}">
+	<!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+	<!-- Fancybox -->
+	<link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+	<!-- Themify Icons -->
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+	<!-- Nice Select CSS -->
+    <link rel="stylesheet" href="{% static 'css/niceselect.css' %}">
+	<!-- Animate CSS -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<!-- Flex Slider CSS -->
+    <link rel="stylesheet" href="{% static 'css/flex-slider.min.css' %}">
+	<!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'css/owl-carousel.css' %}">
+	<!-- Slicknav -->
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}">
+	
+	<!-- Eshop StyleSheet -->
+	<link rel="stylesheet" href="{% static 'css/reset.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+
+
+
+	<script type="text/javascript">
+
+		var user = '{{request.user}}'
+
+		function getToken(name) {
+			var cookieValue = null;
+			if (document.cookie && document.cookie !== '') {
+				var cookies = document.cookie.split(';');
+				for (var i = 0; i < cookies.length; i++) {
+					var cookie = cookies[i].trim();
+					// Does this cookie string begin with the name we want?
+					if (cookie.substring(0, name.length + 1) === (name + '=')) {
+						cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+						break;
+					}
+				}
+			}
+			return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken')
+
+		function getCookie(name) {
+			// Split cookie string and get all individual name=value pairs in an array
+			var cookieArr = document.cookie.split(";");
+
+			// Loop through the array elements
+			for(var i = 0; i < cookieArr.length; i++) {
+				var cookiePair = cookieArr[i].split("=");
+
+				/* Removing whitespace at the beginning of the cookie name
+				and compare it with the given string */
+				if(name == cookiePair[0].trim()) {
+					// Decode the cookie value and return
+					return decodeURIComponent(cookiePair[1]);
+				}
+			}
+
+			// Return null if not found
+			return null;
+		}
+		var cart = JSON.parse(getCookie('cart'))
+
+		if (cart == undefined){
+			cart = {}
+			console.log('Cart Created!', cart)
+			document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+		}
+		console.log('Cart:', cart)
+
+		</script>
+
+	
+	
+</head>
+<body class="js">
+	
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="preloader-inner">
+			<div class="preloader-icon">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<!-- End Preloader -->
+	
+	
+	<!-- Header -->
+	<header class="header shop">
+		<!-- Topbar -->
+		<div class="topbar">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-12 col-12">
+						<!-- Top Left -->
+						<div class="top-left">
+							<ul class="list-main">
+								<li><i class="ti-headphone-alt"></i> 0-2800-8000</li>
+								<li><i class="ti-email"></i> support@elvery.com</li>
+							</ul>
+						</div>
+						<!--/ End Top Left -->
+					</div>
+					<div class="col-lg-7 col-md-12 col-12">
+						<!-- Top Right -->
+						{% if user.is_authenticated %}
+						<div class="right-content">
+							<a href="{% url 'dashboard' %}">
+							<span class="active">{{ user.username }}</span>
+							</a>
+						</div>
+						<div class="right-content">
+							<form action="{% url 'logout' %}">
+							{% csrf_token %}
+							<button type="submit">
+								<span>ออกจากระบบ</span>
+							</button>
+							|&nbsp;
+							</form>
+						</div>
+						{% else %}
+						<div class="right-content">
+							<a href="{% url 'login' %}">
+							<span>เข้าสู่ระบบ</span>
+							</a>
+						</div>
+						<div class="right-content">
+							<a href="{% url 'register' %}">
+							<span>สมัครสมาชิก</span>
+							</a>
+							|&nbsp;
+						</div>
+    					{% endif %}
+						<!-- End Top Right -->
+					</div>
+					<div class="col-lg-12 col-md-3 col-12">
+						<div class="right-bar">
+							
+							<div class="sinlge-bar shopping">
+								<a href="{% url 'cart' %}" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{ cartItems }}</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<!-- End Topbar -->
+	
+
+{% block content %}
+
+
+{% endblock content %}
+
+<!-- Jquery -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.0.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<!-- Popper JS -->
+<script src="{% static 'js/popper.min.js' %}"></script>
+<!-- Bootstrap JS -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- Color JS -->
+<script src="{% static 'js/colors.js' %}"></script>
+<!-- Slicknav JS -->
+<script src="{% static 'js/slicknav.min.js' %}"></script>
+<!-- Owl Carousel JS -->
+<script src="{% static 'js/owl-carousel.js' %}"></script>
+<!-- Magnific Popup JS -->
+<script src="{% static 'js/magnific-popup.js' %}"></script>
+<!-- Waypoints JS -->
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<!-- Countdown JS -->
+<script src="{% static 'js/finalcountdown.min.js'%}"></script>
+<!-- Nice Select JS -->
+<script src="{% static 'js/nicesellect.js' %}"></script>
+<!-- Flex Slider JS -->
+<script src="{% static 'js/flex-slider.js' %}"></script>
+<!-- ScrollUp JS -->
+<script src="{% static 'js/scrollup.js' %}"></script>
+<!-- Onepage Nav JS -->
+<script src="{% static 'js/onepage-nav.min.js' %}"></script>
+<!-- Easing JS -->
+<script src="{% static 'js/easing.js' %}"></script>
+<!-- Active JS -->
+<script src="{% static 'js/active.js' %}"></script>
+<!-- Card JS -->
+<script src="{% static 'js/cart.js' %}"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>

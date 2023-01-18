@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block site_title %}lสมัครสมาชิก - {% endblock %}
+
+{% block content %}
+<center><section class="content-section content-section-single">
+  <div class="content-container content-container-narrow">
+    <h3 class="content-title">สมัครสมาชิก</h3><br>
+    <form action="{% url 'register' %}" method="POST">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      <div class="form-field">
+        {{ form.username.label_tag }}<br>
+        {{ form.username }}
+        {{ form.username.errors }}
+      </div><br>
+      <div class="form-field">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {{ form.email.errors }}
+      </div><br>
+      <div class="form-field">
+        รหัสผ่าน:<br>
+        <!--{{ form.password1.label_tag }}-->
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+      </div><br>
+      <div class="form-field">
+        ยืนยันรหัสผ่าน:
+        <!--{{ form.password2.label_tag }}-->
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+      </div><br>
+      <br>
+      <p>
+        <button class="button button-primary" type="submit">สมัครสมาชิก</button>
+      </p>
+      หรือ
+      <p>
+        <a href="{% url 'login' %}">เข้าสู่ระบบ</a>
+      </p>
+      <br>
+      <p>
+        <a href="{% url 'home' %}">กลับสู่หน้าหลัก</a>
+      </p>
+    </form>
+    </form>
+  </div>
+</section></center>
+{% endblock %}
