@@ -8,5 +8,5 @@ the user interface.
 
 ## Previews
 <p align="left">
-  <img width="780" src="Previews/HomePage.png">
+  <img width="780" src="Previews/HomePage.jpg">
 </p>
