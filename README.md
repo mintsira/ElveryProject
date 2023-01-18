@@ -10,7 +10,6 @@ the user interface.
 <p align="left">
   <img width="780" src="Previews/HomePage.jpg">
 </p>
-
 <p align="left">
   <img width="780" src="Previews/HomePage2.jpg">
 </p>
