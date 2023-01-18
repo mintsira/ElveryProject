@@ -10,3 +10,30 @@ the user interface.
 <p align="left">
   <img width="780" src="Previews/HomePage.jpg">
 </p>
+<p align="left">
+  <img width="780" src="Previews/HomePage2.jpg">
+</p>
+<p align="left">
+  <img width="780" src="Previews/HomePage3.jpg">
+</p>
+<p align="left">
+  <img width="780" src="Previews/MenuPage.jpg">
+</p>
+<p align="left">
+  <img width="780" src="Previews/MenuPage2.jpg">
+</p>
+<p align="left">
+  <img width="780" src="Previews/CartPage.jpg">
+</p>
+<p align="left">
+  <img width="780" src="Previews/CheckoutPage.jpg">
+</p>
+<p align="left">
+  <img width="780" src="Previews/CheckoutPage2.jpg">
+</p>
+<p align="left">
+  <img width="780" src="Previews/RegistrationtPage.jpg">
+</p>
+<p align="left">
+  <img width="780" src="Previews/LoginPage.jpg">
+</p>
