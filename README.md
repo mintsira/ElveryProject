@@ -5,3 +5,8 @@ underlying medical conditions, which was
 developed using Python Django with SQLite3 for
 the database and HTML, CSS, and JavaScript for
 the user interface.
+
+## Previews
+<p align="left">
+  <img width="780" src="Previews/HomePage.png">
+</p>
