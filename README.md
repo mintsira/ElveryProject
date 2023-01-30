@@ -1,10 +1,5 @@
 # Elvery Project
-A web application for ordering meals that is
-appropriate for the elderly and those with
-underlying medical conditions, which was
-developed using Python Django with SQLite3 for
-the database and HTML, CSS, and JavaScript for
-the user interface.
+A web application for ordering meals was developed using Python Django with SQLite3 for the database and HTML, CSS, and JavaScript for the user interface. which is a web application for ordering meals and is suitable for the elderly and those with underlying medical concerns.
 
 ## Previews
 <p align="left">
